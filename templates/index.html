@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'page.css' %}" />
+    <script src="{% static 'page.js' %}"></script>
+    <title>YouTube Video Clipper</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-text">
+        <div class="shreehari">|| Shree Hari ||</div>
+        <h1>YouTube Video Clipper</h1>
+      </div>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="youtube-url">YouTube URL:</label>
+          <input type="text" id="youtube-url" name="youtube_url" required />
+        </div>
+
+        <div class="form-group">
+          <div class="Toggle-Switch">
+            <label class="switch-label">Want To Trim A Video?</label>
+            <label class="switch">
+                <input type="checkbox" id="toggle"/>
+                <span class="slider round"></span>
+              </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="starttime-fields">
+          <label for="start-time">Start Time:</label>
+          <input type="text" id="start-time" name="start_time" />
+        </div>
+
+        <div class="form-group" id="endtime-fields">
+          <label for="end-time">End Time:</label>
+          <input type="text" id="end-time" name="end_time" />
+        </div>
+
+        <div class="form-group">
+          <label for="file-path">File Path:</label>
+          <input type="text" id="file-path" name="file_path" />
+        </div>
+
+        <div class="form-group">
+          <label for="quality">Quality:</label>
+          <select id="quality" name="quality">
+            <option value="360p">360p</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+            <option value="1080p">1080p</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <div class="Toggle-Switch">
+              <label class="switch-label">Want To Download Full Video? </label>
+              <label class="switch">
+                  <input type="checkbox"  value="on" name="video_download" id="toggle"/>
+                  <span class="slider round"></span>
+                </label>
+            </div>
+          </div>
+        
+        <div class="button-container">
+          <button type="submit">Clip Video</button>
+        </div>
+        {% if message %}
+          <div id="toast-container" class="toast-container">
+            <div class="toast">{{ message }}</div>
+          </div>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>

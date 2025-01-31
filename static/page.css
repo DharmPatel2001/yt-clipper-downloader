@@ -1,0 +1,341 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Ensure full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5c8374;
+  flex-direction: column; /* Stack elements vertically */
+  overflow: auto;
+  font-family: "Poppins", serif;
+}
+
+.container {
+  background: #eee4b1;
+  height: 100vh;
+  justify-content: center;
+  padding: 25px;
+  border-radius: 10px ;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  max-width: 100%; /* Prevent the container from overflowing horizontally */
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; /* Allow container to grow and push footer down */
+  /* border: 2px solid red; */
+}
+.container-text{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.shreehari {
+  color: #ff204e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+ margin-bottom: 20px; 
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 41px;
+    height: 15px;
+    justify-content:space-evenly;
+    text-align: center;
+    margin-top: 10px;
+    
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .Toggle-Switch{
+    display: flex;
+    flex-direction: row;
+    text-align: center;     
+    flex: 1;
+    font-size: 16px;
+    text-align: left;
+  }
+  .switch-label{
+    padding-right: 20px;
+    padding-top:5px;
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+label {
+  font-weight: bold;
+  width: 120px;
+  text-align: right;
+  padding: 10px;
+  /* margin: ; */
+}
+
+input,
+select,
+button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+}
+
+.success {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  color: #04aa6d;
+  font-weight: bold;
+}
+
+footer .message {
+  display: none;
+  font-size: 16px;
+  color: #fff; /* Success color */
+}
+
+/* Show message when it's available */
+footer .message.active {
+  display: block;
+}
+#endtime-fields,#starttime-fields{
+    display: none;
+}
+
+.toast-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast.success {
+  background-color: green;
+}
+
+.toast.error {
+  background-color: red;
+}
+
+.toast.info {
+  background-color: blue;
+}
+
+
+/* Responsive */
+/*@media (max-width: 450px) {
+  .container {
+    width: 90%;
+    height: 100%;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    justify-content: space-between;
+  }
+  .container-text{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .shreehari {
+    font-size: 10px;
+  }
+  input , select {
+    flex: 2;
+    padding: 5px;
+    margin-bottom: 15px;
+    width: 97%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    justify-content: center;
+  }
+  select{
+    width: 100%;
+  }
+  label {
+    text-align: left;
+    padding: 0px;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .success {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color: #04aa6d;
+    font-weight: bold;
+  }
+  
+}
+@media (max-width: 300px) {
+  .container {
+    width: 90%;
+    height: 100%;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .container-text{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .shreehari {
+    font-size: 10px;
+  }
+  input , select {
+    flex: 2;
+    padding: 5px;
+    width: 97%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: "Poppins", serif;
+    font-size: 16px;
+    justify-content: center;
+    text-align: center;
+  }
+  select{
+    width: 100%;
+    }
+  label {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 0.6rem;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .success {
+    display: block;
+    font-size: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    color: #04aa6d;
+  }
+}*/
