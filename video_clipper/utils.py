@@ -1,6 +1,7 @@
 import yt_dlp
 import os
 import ffmpeg
+import re
 
 def get_video_quality(youtube_url):
     """ Get available video formats from YouTube using yt-dlp """
@@ -48,6 +49,15 @@ def clip_video(input_file, output_file, output_directory, start_time, end_time, 
     else:
         print(f"Error: File {input_file} not found.")
 
+def sanitize_filename(filename):
+    """Remove or replace invalid characters in filename"""
+    # Replace invalid characters with underscore
+    sanitized = re.sub(r'[<>:"/\\|?*]', '_', filename)
+    # Remove any multiple underscores
+    sanitized = re.sub(r'_+', '_', sanitized)
+    # Remove leading/trailing spaces and dots
+    sanitized = sanitized.strip('. ')
+    return sanitized
 
 def find_song_data(youtube_url, file_path, start_time, end_time, video_download, quality="720p"):
     available_qualities = get_video_quality(youtube_url)
@@ -95,7 +105,7 @@ def find_song_data(youtube_url, file_path, start_time, end_time, video_download,
         delete_mp3_and_webm_files(directory=file_path, video_filename=info_dict["title"])
 
     if start_time is not None and end_time is not None:
-        title = info_dict["title"]
+        title = sanitize_filename(info_dict["title"])
         clipped_video_filename = f"clip_{title}_{start_time}_{end_time}_{requested_quality}p.mp4"
         clip = clip_video(video_filename, clipped_video_filename, file_path, start_time, end_time, video_download)
         print(f"Clipped video saved to: {clipped_video_filename}")
